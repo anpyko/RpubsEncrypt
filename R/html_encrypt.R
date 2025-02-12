@@ -65,4 +65,3 @@ if (!is.null(viewer)) {
 
 return(temp_file)
 }
-
