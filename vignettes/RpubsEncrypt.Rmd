@@ -1,0 +1,34 @@
+---
+title: "Encrypting Self-Contained HTML Files"
+author: "Andrei Pyko"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Encrypting Self-Contained HTML Files}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+The `RpubsEncrypt` package allows users to encrypt HTML files by embedding external dependencies and securing the document with a password.
+
+## Installation
+```r
+# Install from GitHub
+# install.packages("devtools")
+devtools::install_github("your_github/RpubsEncrypt")
+```
+
+## Usage Example
+```r
+library(RpubsEncrypt)
+self_contained_encrypt("report.html", password = "mysecurepassword", self_contained = TRUE)
+```
+
+## Encryption Details
+The encryption uses `pagecryptr` and ensures that:
+- The document is **fully self-contained** (no external dependencies).
+- Only users with the correct password can decrypt the content.
+
+## More Information
+See `?self_contained_encrypt` for detailed function documentation.
+

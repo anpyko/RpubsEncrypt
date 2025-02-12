@@ -1,0 +1,16 @@
+Package: RpubsEncrypt
+Title: Encrypt Self-Contained HTML Files
+Version: 0.1.0
+Authors@R: 
+    person("Andrei", "Pyko", email = "dr.pyko@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5170-9728"))
+Description: 
+    `RpubsEncrypt` allows users to create self-contained HTML documents and encrypt them using a password.
+    It ensures that sensitive HTML reports remain private and secure.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports: xml2, base64enc, htmltools, pagecryptr
+dependencies: testthat, knitr
+Suggests: testthat, knitr
+VignetteBuilder: knitr 
+RoxygenNote: 7.3.1
