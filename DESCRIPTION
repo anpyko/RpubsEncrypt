@@ -10,6 +10,7 @@ Description:
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: xml2, base64enc, htmltools, pagecryptr
+Remotes: brentscott93/pagecryptr
 dependencies: testthat, knitr
 Suggests: testthat, knitr
 VignetteBuilder: knitr 

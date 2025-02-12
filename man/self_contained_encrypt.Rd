@@ -5,8 +5,8 @@
 \title{Create a Self-Contained HTML and Encrypt it}
 \usage{
 self_contained_encrypt(
-  input_file,
-  password,
+  input_file = NULL,
+  password = NULL,
   self_contained = FALSE,
   output_file = NULL
 )
