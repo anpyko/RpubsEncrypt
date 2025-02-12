@@ -14,48 +14,36 @@ This script encrypts an HTML file using the `pagecryptr` R package, incorporatin
 
 ## Installation
 
-Ensure you have the `pagecryptr` package installed. If not, install it using:
-
+To install the package from GitHub:
 ```r
-install.packages("pagecryptr")
+# Install devtools if not installed
+if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
+
+# Install RpubsEncrypt from GitHub
+devtools::install_github("anpyko/RpubsEncrypt")
 ```
 
 ## Usage
 
-Use the script below to encrypt an HTML file and open it:
+Use the `self_contained_encrypt` function to create and encrypt a self-contained HTML file:
 
 ```r
-encrypt_and_view <- function(input_file, password) {
-  message("Encrypting the file...")
-  
-  # Define output file name
-  encrypted_file <- gsub("\\.html$", "_encrypted.html", input_file)
-  
-  # Encrypt the HTML file
-  pagecryptr::pagecryptr(input_file, password, out_file = encrypted_file, encoding = "UTF-8")
-  
-  # Check if the encrypted file was created
-  if (!file.exists(encrypted_file)) stop("Error: Encrypted file not created!")
-  
-  # Copy encrypted file to a temporary directory
-  temp_file <- file.path(tempdir(), basename(encrypted_file))
-  file.copy(encrypted_file, temp_file, overwrite = TRUE)
-  
-  # Open in RStudio Viewer or browser
-  viewer <- getOption("viewer")
-  if (!is.null(viewer)) {
-    message("Opening in RStudio Viewer...")
-    viewer(temp_file)
-  } else {
-    browseURL(temp_file)
-  }
-  
-  return(temp_file)
-}
+library(RpubsEncrypt)
 
-# Example usage
-encrypt_and_view("example.html", "mypassword")
+# Encrypt and optionally make self-contained
+self_contained_encrypt(
+  input_file = "example.html", 
+  password = "mypassword", 
+  self_contained = TRUE,  # Set to TRUE if you want to embed all resources
+  output_file = "example_encrypted.html" # Optional output file path
+)
 ```
+
+### Function Arguments
+- `input_file`: Path to the input HTML file.
+- `password`: Password for encryption.
+- `self_contained`: Convert to self-contained HTML before encrypting (default: FALSE).
+- `output_file`: Optional output file path.
 
 ## Uploading to RPubs
 
